@@ -1,5 +1,4 @@
 name: Build and Test Smart Contracts
-
 on:
   push:
     branches: [ "master" ]
@@ -23,9 +22,19 @@ jobs:
            ls -la
            find
       - name: Build hello contract
-        uses: simonsso/cargo-contract@tryci
+        uses: ./actions/action-cargo
         with:
-          cargo-cmd: build
+          cargo-cmd: cargo contract build
+          working-directory: examples/hello
+      - name: Test hello contract
+        uses: ./actions/action-cargo
+        with:
+          cargo-cmd: cargo contract test
+          working-directory: examples/hello
+      - name: test hello contract
+        uses: ./actions/action-cargo
+        with:
+          cargo-cmd: cargo test
           working-directory: examples/hello
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
