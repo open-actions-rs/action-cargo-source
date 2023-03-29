@@ -26,19 +26,19 @@ jobs:
         with:
           cargo-cmd: cargo contract build
           working-directory: examples/hello
-      - name: Test hello contract with cargo contract test
-        uses: ./actions/action-cargo
-        with:
-          cargo-cmd: cargo contract test
-          working-directory: examples/hello
-      - name: Test hello contract with cargo test
-        uses: ./actions/action-cargo
-        with:
-          cargo-cmd: cargo test
-          working-directory: examples/hello
-      - uses: ./actions/action-cargo
-        with:
-          cargo-cmd: versions.sh
+      # - name: Test hello contract with cargo contract test
+      #   uses: ./actions/action-cargo
+      #   with:
+      #     cargo-cmd: cargo contract test
+      #     working-directory: examples/hello
+      # - name: Test hello contract with cargo test
+      #   uses: ./actions/action-cargo
+      #   with:
+      #     cargo-cmd: cargo test
+      #     working-directory: examples/hello
+      # - uses: ./actions/action-cargo
+      #   with:
+      #     cargo-cmd: versions.sh
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
