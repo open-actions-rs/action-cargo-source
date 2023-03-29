@@ -1,4 +1,5 @@
 #!/bin/sh
+(
 echo Tool versions:
 
 cargo -vV
@@ -8,4 +9,6 @@ echo cargo-contract:
 cargo contract --version
 echo Rustup:
 rustup toolchain list
-wasm-opt --version
+echo WASM opt:
+wasm-opt --version ) > toolversions
+cat toolversions
