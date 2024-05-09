@@ -14,7 +14,7 @@ jobs:
     env:
       RUST_BACKTRACE: full
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Show filesystem
         working-directory: examples/hello
         run: |
@@ -40,7 +40,7 @@ jobs:
       #   with:
       #     cargo-cmd: versions.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: contracts
           path: |
