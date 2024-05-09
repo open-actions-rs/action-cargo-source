@@ -14,7 +14,7 @@ runs:
   env:
     actionref: dev2
   using: 'docker'
-  image: "docker://openactionrs/action-cargo:${{actionref}}"
+  image: "docker://openactionrs/action-cargo:${{env.actionref}}"
   args:
     - ${{inputs.working-directory}}
     - ${{inputs.cargo-cmd}}
