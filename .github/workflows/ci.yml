@@ -40,7 +40,7 @@ jobs:
       #   with:
       #     cargo-cmd: versions.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: contracts
           path: |
