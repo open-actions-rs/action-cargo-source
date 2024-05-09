@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: src
       - name: Checkout target
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: target
           token: ${{ secrets.TOKEN_FOR_ACTION_CARGO2 }}
