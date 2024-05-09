@@ -11,12 +11,17 @@ inputs:
     required: true
     default: '.'
 runs:
-  env:
-    actionref: "dev2"
-    REF: "docker://openactionrs/action-cargo:${{ github.action_ref }}"
-    ACTIONREF: ${{github.action_ref}}
-  using: 'docker'
-  image: "docker://openactionrs/action-cargo:${{env.actionref}}"
-  args:
-    - ${{inputs.working-directory}}
-    - ${{inputs.cargo-cmd}}
+  using: composite
+  steps:
+    - name: Store environment
+      id: storeenv
+      env:
+        REF: "docker://openactionrs/action-cargo:${{ github.action_ref }}"
+        ACTION_REF: ${{github.action_ref}}
+      run: echo "ACTION_REF=${{ ACTION_REF }}" >> $GITHUB_OUTPUT
+    - name: execute
+      using: 'docker'
+      image: "docker://openactionrs/action-cargo:$ACTION_REF"
+      args:
+        - ${{inputs.working-directory}}
+        - ${{inputs.cargo-cmd}}
