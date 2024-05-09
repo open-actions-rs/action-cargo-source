@@ -12,9 +12,9 @@ inputs:
     default: '.'
 runs:
   env:
-    actionref: ${{ github.action_ref }}
+    actionref: dev2
   using: 'docker'
-  image: 'docker://openactionrs/action-cargo:${{actionref}}'
+  image: "docker://openactionrs/action-cargo:${{actionref}}"
   args:
     - ${{inputs.working-directory}}
     - ${{inputs.cargo-cmd}}
