@@ -1,15 +1,14 @@
-FROM rust:1.68-bullseye as runtime
+FROM rust:1.78-bullseye as runtime
 ENV DEBIAN_FRONTEND=noninteractive
 ARG target=x86_64-unknown-linux-gnu
 RUN apt-get update && apt-get install -qy libssl-dev pkg-config binaryen
-RUN rustup default nightly-2023-03-01
 RUN rustup target add ${target}
 RUN rustup target add wasm32-unknown-unknown
-RUN rustup component add rust-src --toolchain nightly-2023-03-01-x86_64-unknown-linux-gnu
 RUN rustup component add rust-src
+RUN rustup component add clippy
 RUN cargo install cargo-dylint
 RUN cargo install dylint-link
-RUN cargo install cargo-contract --force --locked --version 2.0.0
+RUN cargo install cargo-contract --force
 WORKDIR /github/workspace
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./versions.sh /usr/local/bin/versions.sh

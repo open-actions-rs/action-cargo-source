@@ -14,7 +14,7 @@ jobs:
     env:
       RUST_BACKTRACE: full
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Show filesystem
         working-directory: examples/hello
         run: |
@@ -26,21 +26,8 @@ jobs:
         with:
           cargo-cmd: cargo contract build
           working-directory: examples/hello
-      # - name: Test hello contract with cargo contract test
-      #   uses: ./actions/action-cargo
-      #   with:
-      #     cargo-cmd: cargo contract test
-      #     working-directory: examples/hello
-      # - name: Test hello contract with cargo test
-      #   uses: ./actions/action-cargo
-      #   with:
-      #     cargo-cmd: cargo test
-      #     working-directory: examples/hello
-      # - uses: ./actions/action-cargo
-      #   with:
-      #     cargo-cmd: versions.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: contracts
           path: |
