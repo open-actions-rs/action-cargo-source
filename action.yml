@@ -11,8 +11,10 @@ inputs:
     required: true
     default: '.'
 runs:
+  env:
+    ACTION_REF: $GITHUB_ACTION_REF
   using: 'docker'
-  image: 'Dockerfile'
+  image: docker://openactionrs/action-cargo:${{ACTION_REF}}
   args:
     - ${{inputs.working-directory}}
     - ${{inputs.cargo-cmd}}
