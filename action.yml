@@ -12,7 +12,7 @@ inputs:
     default: '.'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: docker://openactionrs/action-cargo:r1.0.0
   args:
     - ${{inputs.working-directory}}
     - ${{inputs.cargo-cmd}}
